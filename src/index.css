@@ -163,10 +163,16 @@ input {
     height: 2rem;
     outline: 1px solid rgb(0, 255, 0);
 }
+.dropdown:hover {
+    outline: 1px solid white;
+}
+.dropdown:focus {
+        
+}
 
 #myDropdown{
     position: relative;
-    top: 1rem;
+    top: 0.35rem;
     outline-offset: -1px;
 }
 .ddEl {
@@ -174,6 +180,9 @@ input {
     outline: 1px solid rgb(0, 255, 0);
     background-color: black;
     height: 2rem;
+}
+.ddEl:hover {
+    outline: 1px solid white;
 }
 
 .hide {
