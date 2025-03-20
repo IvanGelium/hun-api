@@ -2,8 +2,9 @@ const bg = require("./index")
 export {crUsUi}
 const users = ["alfa", "artem","kirill","stas","yulian",'test']
 let usersObj = {}
-
-
+let signForm = ""
+let dropBtn = ""
+let resp = ""
 
 
 const crUsUi = ()=> {
@@ -20,7 +21,7 @@ const crUsUi = ()=> {
     header.className = "header"
     const masscont = document.createElement("div")
     masscont.className = "masscont"
-    const signForm = document.createElement("form")
+    signForm = document.createElement("form")
     signForm.className = "signForm input-cont"
     signForm.action = "submit"
     const passPassCont = document.createElement("div")
@@ -62,7 +63,7 @@ const crUsUi = ()=> {
     dd.className = "dd input-cont"
     const dropdown = document.createElement("div")
     dropdown.className = "dropdown"
-    const dropBtn = document.createElement("div")
+    dropBtn = document.createElement("div")
     dropBtn.className = "drop-btn"
     dropBtn.textContent = "Автор"
 
@@ -86,6 +87,10 @@ const crUsUi = ()=> {
     signUp.className = "btn"
     signUp.type = "submit"
     signUp.value = "Создать"
+
+    resp = document.createElement("div")
+    resp.classList = "me-container masscont"
+    resp.textContent = "Введите данные пользователя"
 
 
     bg.bg.appendChild(header)
@@ -125,6 +130,105 @@ const crUsUi = ()=> {
 
     signForm.appendChild(btnContainer)
     btnContainer.appendChild(signUp)
+    header.appendChild(resp)
+
+    signUp.addEventListener("click",(e)=>getData(e))
 
 }
 
+fetch
+
+
+
+  function getData(e) {
+    e.preventDefault()
+    const fd = new FormData(signForm)
+    const obj = Object.fromEntries(fd)
+    console.log(obj,dropBtn.textContent)
+    signUp(obj.mail,obj.userName,obj.userCompany, dropBtn.textContent === "Автор" ? "test" : dropBtn.textContent)
+  }
+
+function signUp(email,name,company,author) {
+    const json = {
+        "admin_user": {
+          "email": email,
+          "password": email,
+          "password_confirmation": email,
+          "name": name === "" ? "Admin":name,
+          "nick": "Sample Ivan",
+          "member_type": "owner",
+          "company": company ==="" ? "Без компании":company,
+          "utm_source": author,
+          "is_adv_agree": true,
+          "time_zone": "Asia/Yekaterinburg",
+          "admin_user_setting": {
+            "is_hide_history_applicant": true,
+            "is_hide_experience": true,
+            "is_hide_education": true,
+            "is_hide_chat": true,
+            "pick_sort_vacancies": "owners",
+            "pick_sort_applications": "table",
+            "download_pdf": {
+              "is_first_name": true,
+              "is_last_name": true,
+              "is_middle_name": true,
+              "is_photo": true,
+              "is_gender": true,
+              "is_birthday": true,
+              "is_age": true,
+              "is_country": true,
+              "is_citizenship": true,
+              "is_company": true,
+              "is_position": true,
+              "is_phone": true,
+              "is_email": true,
+              "is_tg": true,
+              "is_skype": true,
+              "is_money": true,
+              "is_total_experience": true,
+              "is_source_add": true,
+              "is_source_name": true,
+              "is_about_me": true,
+              "is_skills": true,
+              "is_vacancies": true,
+              "is_worklog": true,
+              "is_experience": true,
+              "is_education": true,
+              "is_contacts": true,
+              "is_tags": true,
+              "is_unidentified_info": true,
+              "is_resume_urls": true
+            }
+          }
+        }
+      } 
+
+      fetch ("https://huntlee.ru/api/sign_up", {
+        method: "POST",
+        headers: {
+            accept: '*/*',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(json),
+      }) 
+      .then((response) => response.json()) // Преобразуем ответ в JSON
+        .then((result) => {
+            console.log(result)
+            if (result.status === "error") {
+                resp.textContent = `Ответ: ${result.message}`
+            }
+            if (result.status === "success") {
+                resp.textContent = `Ответ: ID: ${result.message.admin_user.id}; Почта: ${result.message.admin_user.email}; Имя: ${result.message.admin_user.name};` 
+            }
+            
+            
+            
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error) // Обрабатываем ошибку
+            return error
+        })
+
+        resp.textContent = "Загрузка..."
+       
+}

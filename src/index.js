@@ -5,7 +5,7 @@ const crApJs = require("./crAp")
 const crUsJs = require("./crUs")    
 
 
-
+window.onload = (()=> crUsJs.crUsUi())
 
 const bg = document.querySelector(".bg")
 
