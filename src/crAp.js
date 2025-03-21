@@ -1,78 +1,75 @@
-const vars = require("./base64")
-const bg = require("./index")
-export {initUi}
+const vars = require('./base64')
+const bg = require('./index')
+export { initUi }
 
-let logForm = ""
-let meCont = ""
-let createForm = ""
+let logForm = ''
+let meCont = ''
+let createForm = ''
 let stage = false
-const stageString = "stage."
+const stageString = 'stage.'
 let HasTag = false
 let photos = false
-let vac = ""
-let stat = ""
-
+let vac = ''
+let stat = ''
 
 const initUi = () => {
-
-    if (bg.bg.lastElementChild.className !== "heheader") {
-        while (bg.bg.lastElementChild.className !== "heheader") {
-         bg.bg.lastElementChild.remove()   
+    if (bg.bg.lastElementChild.className !== 'heheader') {
+        while (bg.bg.lastElementChild.className !== 'heheader') {
+            bg.bg.lastElementChild.remove()
         }
     }
-    bg.crAp.style.opacity = "100%"
-    bg.crUs.style.opacity = "50%"
+    bg.crAp.style.opacity = '100%'
+    bg.crUs.style.opacity = '50%'
 
-    const header = document.createElement("div")
-    header.className = "header"
-    const logContainer = document.createElement("div")
-    logContainer.className = "logContainer masscont" 
-    logForm = document.createElement("form")
-    logForm.action = "submit"
-    logForm.className = "logForm input-cont"
-    const logContainerEmail = document.createElement("div")
-    logContainerEmail.className = "email-container input-cont"
-    const logLabelEmail = document.createElement("label")
-    logLabelEmail.setAttribute("for","email")
-    logLabelEmail.textContent = "Логин"
-    const logInputEmail = document.createElement("input")
-    logInputEmail.setAttribute("type","email")
-    logInputEmail.setAttribute("name","email")
-    logInputEmail.id ="email"
-    logInputEmail.placeholder = "addres@domen.domen"
+    const header = document.createElement('div')
+    header.className = 'header'
+    const logContainer = document.createElement('div')
+    logContainer.className = 'logContainer masscont'
+    logForm = document.createElement('form')
+    logForm.action = 'submit'
+    logForm.className = 'logForm input-cont'
+    const logContainerEmail = document.createElement('div')
+    logContainerEmail.className = 'email-container input-cont'
+    const logLabelEmail = document.createElement('label')
+    logLabelEmail.setAttribute('for', 'email')
+    logLabelEmail.textContent = 'Логин'
+    const logInputEmail = document.createElement('input')
+    logInputEmail.setAttribute('type', 'email')
+    logInputEmail.setAttribute('name', 'email')
+    logInputEmail.id = 'email'
+    logInputEmail.placeholder = 'addres@domen.domen'
 
-    const logContainerPass = document.createElement("div")
-    logContainerPass.classList = "pass-container input-cont"
-    const logLabelPass = document.createElement("label")
-    logLabelPass.setAttribute("for","pass")
-    logLabelPass.textContent = "Пароль"
-    logLabelPass.id = "pass"
-    const logInputPass = document.createElement("input")
-    logInputPass.setAttribute("type","password")
-    logInputPass.setAttribute("name","pass")
-    logInputPass.id ="pass"
-    logInputPass.placeholder = "qwerty123"
+    const logContainerPass = document.createElement('div')
+    logContainerPass.classList = 'pass-container input-cont'
+    const logLabelPass = document.createElement('label')
+    logLabelPass.setAttribute('for', 'pass')
+    logLabelPass.textContent = 'Пароль'
+    logLabelPass.id = 'pass'
+    const logInputPass = document.createElement('input')
+    logInputPass.setAttribute('type', 'password')
+    logInputPass.setAttribute('name', 'pass')
+    logInputPass.id = 'pass'
+    logInputPass.placeholder = 'qwerty123'
 
-    const lastRowCont = document.createElement("div")
-    lastRowCont.className = "lrCont"
+    const lastRowCont = document.createElement('div')
+    lastRowCont.className = 'lrCont'
 
+    const stageAskCont = document.createElement('div')
+    stageAskCont.className = 'stageCont checkboxCont input-cont'
+    const stageAskLabel = document.createElement('label')
+    stageAskLabel.textContent = 'Stage:'
+    const stageAskInput = document.createElement('input')
+    stageAskInput.setAttribute('type', 'checkbox')
+    stageAskInput.setAttribute('name', 'stageCheck')
+    stageAskInput.id = 'stageCheck'
+    stageAskInput.className = 'checkbox'
 
-    const stageAskCont = document.createElement("div")
-    stageAskCont.className = "stageCont checkboxCont input-cont"
-    const stageAskLabel = document.createElement("label")
-    stageAskLabel.textContent = "Stage:"
-    const stageAskInput = document.createElement("input")
-    stageAskInput.setAttribute("type","checkbox")
-    stageAskInput.setAttribute("name","stageCheck")
-    stageAskInput.id = "stageCheck"    
-    stageAskInput.className = "checkbox"
-
-    const logContainerBtn = document.createElement("div")
-    logContainerBtn.className = "btn-container input-cont"
-    const logInputBtn = document.createElement("input")
-    logInputBtn.className = "btn"
-    logInputBtn.type = "submit"
-    logInputBtn.value = "log-int"
+    const logContainerBtn = document.createElement('div')
+    logContainerBtn.className = 'btn-container input-cont'
+    const logInputBtn = document.createElement('input')
+    logInputBtn.className = 'btn'
+    logInputBtn.type = 'submit'
+    logInputBtn.value = 'log-int'
 
     bg.bg.appendChild(header)
 
@@ -95,62 +92,62 @@ const initUi = () => {
     lastRowCont.appendChild(logContainerBtn)
     logContainerBtn.appendChild(logInputBtn)
 
-    const crApUi = document.createElement("div")
-    crApUi.className = "applicant-gen masscont"
-    const genForm = document.createElement("form")
-    genForm.className = "gen-form input-cont"
-    const numbCont = document.createElement("div")
-    numbCont.className = "number-cont input-cont"
+    const crApUi = document.createElement('div')
+    crApUi.className = 'applicant-gen masscont'
+    const genForm = document.createElement('form')
+    genForm.className = 'gen-form input-cont'
+    const numbCont = document.createElement('div')
+    numbCont.className = 'number-cont input-cont'
 
-    const genLabelNumb = document.createElement("label")
-    genLabelNumb.textContent = "Сколько кандидатов?"
-    const genInputNumb = document.createElement("input")
-    genInputNumb.setAttribute("type","number")
-    genInputNumb.setAttribute("name","numb")
-    genInputNumb.id ="num"
-    genInputNumb.placeholder = "1 - 100"
+    const genLabelNumb = document.createElement('label')
+    genLabelNumb.textContent = 'Сколько кандидатов?'
+    const genInputNumb = document.createElement('input')
+    genInputNumb.setAttribute('type', 'number')
+    genInputNumb.setAttribute('name', 'numb')
+    genInputNumb.id = 'num'
+    genInputNumb.placeholder = '1 - 100'
 
-    const vacFieldCont = document.createElement("div")
-    vacFieldCont.className = "input-cont"
-    const vacFieldLabel = document.createElement("label")
-    vacFieldLabel.textContent = "Введите ID вакансии:"
-    const vacFieldInput = document.createElement("input")
-    vacFieldInput.setAttribute("type","number")
-    vacFieldInput.setAttribute("name","vacId")
-    vacFieldInput.id = "vacId"
-    vacFieldInput.placeholder = "Не обязательно"
+    const vacFieldCont = document.createElement('div')
+    vacFieldCont.className = 'input-cont'
+    const vacFieldLabel = document.createElement('label')
+    vacFieldLabel.textContent = 'Введите ID вакансии:'
+    const vacFieldInput = document.createElement('input')
+    vacFieldInput.setAttribute('type', 'number')
+    vacFieldInput.setAttribute('name', 'vacId')
+    vacFieldInput.id = 'vacId'
+    vacFieldInput.placeholder = 'Не обязательно'
 
-    const statusFieldCont = document.createElement("div")
-    statusFieldCont.className = "input-cont"
-    const statusFieldLabel = document.createElement("label")
-    statusFieldLabel.textContent = "Введите ID этапа:"
-    const statusFieldInput = document.createElement("input")
-    statusFieldInput.setAttribute("type","number")
-    statusFieldInput.setAttribute("name","statId")
-    statusFieldInput.id = "statId"
-    statusFieldInput.placeholder = "Не обязательно"
+    const statusFieldCont = document.createElement('div')
+    statusFieldCont.className = 'input-cont'
+    const statusFieldLabel = document.createElement('label')
+    statusFieldLabel.textContent = 'Введите ID этапа:'
+    const statusFieldInput = document.createElement('input')
+    statusFieldInput.setAttribute('type', 'number')
+    statusFieldInput.setAttribute('name', 'statId')
+    statusFieldInput.id = 'statId'
+    statusFieldInput.placeholder = 'Не обязательно'
 
-    const anotherLastRow = document.createElement("div")
-    anotherLastRow.className = "lrCont input-cont"
+    const anotherLastRow = document.createElement('div')
+    anotherLastRow.className = 'lrCont input-cont'
 
-    const weightCont = document.createElement("div")
-    weightCont.classList = "checkboxCont"
+    const weightCont = document.createElement('div')
+    weightCont.classList = 'checkboxCont'
 
-    const weightLabel = document.createElement("label")
-    weightLabel.textContent = "Без фото:"
+    const weightLabel = document.createElement('label')
+    weightLabel.textContent = 'С фото:'
 
-    const weightInput = document.createElement("input")
-    weightInput.setAttribute("type","checkbox")
-    weightInput.setAttribute("name","PhotoCheck")
-    weightInput.id = "PhotoCheck"    
-    weightInput.className = "checkbox"
-    
-    const nubBtnCont = document.createElement("div")
-    nubBtnCont.className = "nubBtnCont input-cont"
-    const genInputBtn = document.createElement("input")
-    genInputBtn.className = "btn"
-    genInputBtn.type = "submit"
-    genInputBtn.value =" Создать"
+    const weightInput = document.createElement('input')
+    weightInput.setAttribute('type', 'checkbox')
+    weightInput.setAttribute('name', 'PhotoCheck')
+    weightInput.id = 'PhotoCheck'
+    weightInput.className = 'checkbox'
+
+    const nubBtnCont = document.createElement('div')
+    nubBtnCont.className = 'nubBtnCont input-cont'
+    const genInputBtn = document.createElement('input')
+    genInputBtn.className = 'btn'
+    genInputBtn.type = 'submit'
+    genInputBtn.value = ' Создать'
 
     header.appendChild(crApUi)
     crApUi.appendChild(genForm)
@@ -175,11 +172,11 @@ const initUi = () => {
     anotherLastRow.appendChild(nubBtnCont)
     nubBtnCont.appendChild(genInputBtn)
 
-    const meContainer = document.createElement("div")
-    meContainer.className ="me-container masscont"
-    const infoMe = document.createElement("div")
-    infoMe.className ="infoMe"
-    infoMe.textContent = "Вы не авторизовались"
+    const meContainer = document.createElement('div')
+    meContainer.className = 'me-container masscont'
+    const infoMe = document.createElement('div')
+    infoMe.className = 'infoMe'
+    infoMe.textContent = 'Вы не авторизовались'
 
     header.appendChild(meContainer)
     meContainer.appendChild(infoMe)
@@ -195,9 +192,7 @@ const initUi = () => {
     })
     meCont = document.querySelector('.me-container')
     createForm = document.querySelector('.gen-form')
-
 }
-
 
 //#region variables
 
@@ -205,7 +200,6 @@ const dataApplicant = {
     first_name: 'Петров',
     last_name: 'Иван',
     middle_name: 'Иванович',
-    photo: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA7Q1JFQVRPUjog',
     lead_type: 'cold',
     birthday: '1988-12-22',
     phone: '+7 (911) 1112233',
@@ -691,9 +685,6 @@ let data = {
 
 //#endregion
 
-
-
-
 let auth_token = ''
 
 const login = (login, password) => {
@@ -702,7 +693,7 @@ const login = (login, password) => {
         password: password,
         source: 'plugin',
     }
-    const logUrl = `https://${stage ? stageString:""}huntlee.ru/api/auth/login`
+    const logUrl = `https://${stage ? stageString : ''}huntlee.ru/api/auth/login`
     fetch(logUrl, {
         method: 'POST',
         headers: {
@@ -723,7 +714,7 @@ const login = (login, password) => {
 }
 
 async function me(auth_token) {
-    const link = `https://${stage ? stageString:""}huntlee.ru/api/me` 
+    const link = `https://${stage ? stageString : ''}huntlee.ru/api/me`
     await fetch(link, {
         method: 'GET',
         headers: {
@@ -744,8 +735,8 @@ async function me(auth_token) {
 
 async function postApplicant() {
     const data = generateApplicant(dataApplicant)
-    const link = `https://${stage ? stageString:""}huntlee.ru/api/applicants`
-    
+    const link = `https://${stage ? stageString : ''}huntlee.ru/api/applicants`
+
     await fetch(link, {
         method: 'POST',
         headers: {
@@ -767,7 +758,7 @@ async function postApplicant() {
         })
 }
 
-function rnd(num =100) {
+function rnd(num = 100) {
     return Math.floor(Math.random() * num)
 }
 
@@ -780,47 +771,42 @@ function generateApplicant(ap) {
         if (photos) {
             ap.photo = `'data:image/jpeg;base64,${vars.photoMale}`
         }
-        if (vac !== "") {
-            ap.vacavacancy_id = vac 
+        if (vac !== '') {
+            ap.vacavacancy_id = vac
         }
-        if (stat !== "") {
+        if (stat !== '') {
             ap.status_id = stat
         }
-       
     } else {
         ap.gender = 'female'
         ap.first_name = femaleNames[rnd(femaleNames.length) - 1]
         ap.last_name = femaleSurnames[rnd(femaleSurnames.length) - 1]
         ap.middle_name = femalePatronymics[rnd(femalePatronymics.length) - 1]
-        if (photos){ap.photo = `'data:image/jpeg;base64,${vars.photoFemale}`}
-        console.log(vac)
-        if (vac !== "") {
-            console.log(vac)
-            ap.vacancy_id = vac 
+        if (photos) {
+            ap.photo = `'data:image/jpeg;base64,${vars.photoFemale}`
         }
-        if (stat !== "") {
-            console.log(stat)
+        if (vac !== '') {
+            ap.vacancy_id = vac
+        }
+        if (stat !== '') {
             ap.status_id = stat
         }
     }
-    
+
     ap.position = professions[rnd(professions.length) - 1]
     ap.phone = Math.floor(Math.random() * 1000000000)
     return ap
 }
 
-
-
-
 function getLog(e) {
     const fd = new FormData(logForm)
     const obj = Object.fromEntries(fd)
-    if (obj.stageCheck === "on") {
+    if (obj.stageCheck === 'on') {
         stage = true
-    } 
-    else {stage = false}
-    console.log(obj)
-    console.log(stage)
+    } else {
+        stage = false
+    }
+
     login(obj.email, obj.pass)
 }
 
@@ -829,19 +815,16 @@ function getCreate(e) {
         alert('Вы не авторизовались')
         return
     }
-    console.log(auth_token)
+
     const fd = new FormData(createForm)
     const obj = Object.fromEntries(fd)
-    obj.PhotoCheck === "on"?photos = false:photos = true
-    console.log(obj)
+    obj.PhotoCheck === 'on' ? (photos = true) : (photos = false)
+
     vac = obj.vacId
     stat = obj.statId
     let num = 1
     obj.numb === '' ? (num = 1) : (num = obj.numb)
-    for (let u = 0; u < num; u++) {
-        const id = setInterval(postApplicant(), 500)
-        clearInterval(id)
-    }
+    load(num)
 }
 
 function uiLogin(me) {
@@ -870,11 +853,11 @@ function uiLogin(me) {
     logMember.textContent = `${isOwner}`
     const logAppCount = document.createElement('div')
     logAppCount.textContent = `Количество кандидатов: ${me.message.applicants_count}`
-    const logEnv = document.createElement("div")
-    logEnv.textContent = `Окружение: ${stage? "Стейдж":"Продакшен"}`
-    const logToken = document.createElement("div")
+    const logEnv = document.createElement('div')
+    logEnv.textContent = `Окружение: ${stage ? 'Стейдж' : 'Продакшен'}`
+    const logToken = document.createElement('div')
     logToken.textContent = `${me.message.token}`
-    logToken.style.letterSpacing = "-0.45rem"
+    logToken.style.letterSpacing = '-0.45rem'
 
     meCont.appendChild(logName)
     meCont.appendChild(logMail)
@@ -885,74 +868,77 @@ function uiLogin(me) {
     meCont.appendChild(logToken)
 
     getTags()
-
 }
 
-
-
-
-function getTags () {
-
-
-    fetch (`https://${stage?stageString:""}huntlee.ru/api/tags`, {
-        method: "GET",
+function getTags() {
+    fetch(`https://${stage ? stageString : ''}huntlee.ru/api/tags`, {
+        method: 'GET',
         headers: {
             accept: 'application/json',
             'X-DCRT-HRM-AUTH': auth_token,
-        }
-    })
-    .then((response) => response.json()) // Преобразуем ответ в JSON
-    .then((result) => {
- 
-       for (let i = 0; i < result.message.length; i++) {
-        result.message[i].name === "Autogenerated applicant"?HasTag= result.message[i].id:HasTag=false
-       }
-       if(HasTag === false) {
-            createTag()
-       }
-       
-    })
-    .catch((error) => {
-        console.error('Ошибка:', error) // Обрабатываем ошибку
-        return error
-    })
-} 
-
-
-function createTag() {
-
-    const tagJson = {
-        "name": "Autogenerated applicant",
-        "color": "#FF0000",
-        "description": "Эта метка помечает генерированных кандидатов, на неё ориентируются все операции со сгенерированными кандидатами"
-      }
-    fetch (`https://${stage?stageString:""}huntlee.ru/api/tags`,{
-        method: "POST",
-        headers: {
-            'accept': 'application/json',
-            'X-DCRT-HRM-AUTH':auth_token,
-            'Content-Type':'application/json',
         },
-        body: JSON.stringify(tagJson)
     })
-    .then((response) => response.json()) // Преобразуем ответ в JSON
-    .then((result) => {
-        HasTag = result.message.id
-        
-    })
+        .then((response) => response.json()) // Преобразуем ответ в JSON
+        .then((result) => {
+            for (let i = 0; i < result.message.length; i++) {
+                result.message[i].name === 'Autogenerated applicant'
+                    ? (HasTag = result.message[i].id)
+                    : (HasTag = false)
+            }
+            if (HasTag === false) {
+                createTag()
+            }
+        })
+        .catch((error) => {
+            console.error('Ошибка:', error) // Обрабатываем ошибку
+            return error
+        })
 }
 
-
+function createTag() {
+    const tagJson = {
+        name: 'Autogenerated applicant',
+        color: '#FF0000',
+        description:
+            'Эта метка помечает генерированных кандидатов, на неё ориентируются все операции со сгенерированными кандидатами',
+    }
+    fetch(`https://${stage ? stageString : ''}huntlee.ru/api/tags`, {
+        method: 'POST',
+        headers: {
+            accept: 'application/json',
+            'X-DCRT-HRM-AUTH': auth_token,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tagJson),
+    })
+        .then((response) => response.json()) // Преобразуем ответ в JSON
+        .then((result) => {
+            HasTag = result.message.id
+        })
+}
 
 function updateTag(id) {
- 
-    fetch (`https://${stage?stageString:""}huntlee.ru/api/applicants/${id}/update_tags`, {
-        method: "POST",
-        headers : {
-            'accept': 'application/json',
-            'X-DCRT-HRM-AUTH':auth_token,
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify({'tags':[HasTag]})
-    }) 
+    fetch(
+        `https://${stage ? stageString : ''}huntlee.ru/api/applicants/${id}/update_tags`,
+        {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'X-DCRT-HRM-AUTH': auth_token,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ tags: [HasTag] }),
+        }
+    )
+}
+
+const timer = (ms) => new Promise((res) => setTimeout(res, ms))
+
+async function load(num) {
+    // We need to wrap the loop into an async function for this to work
+    for (var i = 0; i < num; i++) {
+        postApplicant()
+        console.log(i)
+        await timer(1600) // then the created Promise can be awaited
+    }
 }
