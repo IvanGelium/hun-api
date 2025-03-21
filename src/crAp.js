@@ -5,6 +5,12 @@ export {initUi}
 let logForm = ""
 let meCont = ""
 let createForm = ""
+let stage = false
+const stageString = "stage."
+let HasTag = false
+let photos = false
+let vac = ""
+let stat = ""
 
 
 const initUi = () => {
@@ -47,6 +53,20 @@ const initUi = () => {
     logInputPass.id ="pass"
     logInputPass.placeholder = "qwerty123"
 
+    const lastRowCont = document.createElement("div")
+    lastRowCont.className = "lrCont"
+
+
+    const stageAskCont = document.createElement("div")
+    stageAskCont.className = "stageCont checkboxCont input-cont"
+    const stageAskLabel = document.createElement("label")
+    stageAskLabel.textContent = "Stage:"
+    const stageAskInput = document.createElement("input")
+    stageAskInput.setAttribute("type","checkbox")
+    stageAskInput.setAttribute("name","stageCheck")
+    stageAskInput.id = "stageCheck"    
+    stageAskInput.className = "checkbox"
+
     const logContainerBtn = document.createElement("div")
     logContainerBtn.className = "btn-container input-cont"
     const logInputBtn = document.createElement("input")
@@ -66,7 +86,13 @@ const initUi = () => {
     logContainerPass.appendChild(logLabelPass)
     logContainerPass.appendChild(logInputPass)
 
-    logForm.appendChild(logContainerBtn)
+    logForm.appendChild(lastRowCont)
+
+    lastRowCont.appendChild(stageAskCont)
+    stageAskCont.appendChild(stageAskLabel)
+    stageAskCont.appendChild(stageAskInput)
+
+    lastRowCont.appendChild(logContainerBtn)
     logContainerBtn.appendChild(logInputBtn)
 
     const crApUi = document.createElement("div")
@@ -84,8 +110,43 @@ const initUi = () => {
     genInputNumb.id ="num"
     genInputNumb.placeholder = "1 - 100"
 
+    const vacFieldCont = document.createElement("div")
+    vacFieldCont.className = "input-cont"
+    const vacFieldLabel = document.createElement("label")
+    vacFieldLabel.textContent = "Введите ID вакансии:"
+    const vacFieldInput = document.createElement("input")
+    vacFieldInput.setAttribute("type","number")
+    vacFieldInput.setAttribute("name","vacId")
+    vacFieldInput.id = "vacId"
+    vacFieldInput.placeholder = "Не обязательно"
+
+    const statusFieldCont = document.createElement("div")
+    statusFieldCont.className = "input-cont"
+    const statusFieldLabel = document.createElement("label")
+    statusFieldLabel.textContent = "Введите ID этапа:"
+    const statusFieldInput = document.createElement("input")
+    statusFieldInput.setAttribute("type","number")
+    statusFieldInput.setAttribute("name","statId")
+    statusFieldInput.id = "statId"
+    statusFieldInput.placeholder = "Не обязательно"
+
+    const anotherLastRow = document.createElement("div")
+    anotherLastRow.className = "lrCont input-cont"
+
+    const weightCont = document.createElement("div")
+    weightCont.classList = "checkboxCont"
+
+    const weightLabel = document.createElement("label")
+    weightLabel.textContent = "Без фото:"
+
+    const weightInput = document.createElement("input")
+    weightInput.setAttribute("type","checkbox")
+    weightInput.setAttribute("name","PhotoCheck")
+    weightInput.id = "PhotoCheck"    
+    weightInput.className = "checkbox"
+    
     const nubBtnCont = document.createElement("div")
-    nubBtnCont.className = "nubBtn-cont input-cont"
+    nubBtnCont.className = "nubBtnCont input-cont"
     const genInputBtn = document.createElement("input")
     genInputBtn.className = "btn"
     genInputBtn.type = "submit"
@@ -96,7 +157,22 @@ const initUi = () => {
     genForm.appendChild(numbCont)
     numbCont.appendChild(genLabelNumb)
     numbCont.appendChild(genInputNumb)
-    genForm.appendChild(nubBtnCont)
+
+    genForm.appendChild(vacFieldCont)
+    vacFieldCont.appendChild(vacFieldLabel)
+    vacFieldCont.appendChild(vacFieldInput)
+
+    genForm.appendChild(statusFieldCont)
+    statusFieldCont.appendChild(statusFieldLabel)
+    statusFieldCont.appendChild(statusFieldInput)
+
+    genForm.appendChild(anotherLastRow)
+
+    anotherLastRow.appendChild(weightCont)
+    weightCont.appendChild(weightLabel)
+    weightCont.appendChild(weightInput)
+
+    anotherLastRow.appendChild(nubBtnCont)
     nubBtnCont.appendChild(genInputBtn)
 
     const meContainer = document.createElement("div")
@@ -626,7 +702,7 @@ const login = (login, password) => {
         password: password,
         source: 'plugin',
     }
-    const logUrl = 'https://huntlee.ru/api/auth/login'
+    const logUrl = `https://${stage ? stageString:""}huntlee.ru/api/auth/login`
     fetch(logUrl, {
         method: 'POST',
         headers: {
@@ -647,7 +723,7 @@ const login = (login, password) => {
 }
 
 async function me(auth_token) {
-    const link = 'https://huntlee.ru/api/me'
+    const link = `https://${stage ? stageString:""}huntlee.ru/api/me` 
     await fetch(link, {
         method: 'GET',
         headers: {
@@ -657,6 +733,7 @@ async function me(auth_token) {
     })
         .then((response) => response.json()) // Преобразуем ответ в JSON
         .then((result) => {
+            console.log(result)
             uiLogin(result)
         })
         .catch((error) => {
@@ -667,8 +744,8 @@ async function me(auth_token) {
 
 async function postApplicant() {
     const data = generateApplicant(dataApplicant)
-    const link = 'https://huntlee.ru/api/applicants'
-    console.log(JSON.stringify(data))
+    const link = `https://${stage ? stageString:""}huntlee.ru/api/applicants`
+    
     await fetch(link, {
         method: 'POST',
         headers: {
@@ -681,6 +758,7 @@ async function postApplicant() {
         .then((response) => response.json()) // Преобразуем ответ в JSON
         .then((result) => {
             console.log('Успех:', result) // Обрабатываем успешный ответ
+            updateTag(result.message.id)
             return result
         })
         .catch((error) => {
@@ -699,14 +777,33 @@ function generateApplicant(ap) {
         ap.first_name = maleNames[rnd(maleNames.length) - 1]
         ap.last_name = maleSurnames[rnd(maleSurnames.length) - 1]
         ap.middle_name = malePatronymics[rnd(malePatronymics.length) - 1]
-        ap.photo = `'data:image/jpeg;base64,${vars.photoMale}`
+        if (photos) {
+            ap.photo = `'data:image/jpeg;base64,${vars.photoMale}`
+        }
+        if (vac !== "") {
+            ap.vacavacancy_id = vac 
+        }
+        if (stat !== "") {
+            ap.status_id = stat
+        }
+       
     } else {
         ap.gender = 'female'
         ap.first_name = femaleNames[rnd(femaleNames.length) - 1]
         ap.last_name = femaleSurnames[rnd(femaleSurnames.length) - 1]
         ap.middle_name = femalePatronymics[rnd(femalePatronymics.length) - 1]
-        ap.photo = `'data:image/jpeg;base64,${vars.photoFemale}`
+        if (photos){ap.photo = `'data:image/jpeg;base64,${vars.photoFemale}`}
+        console.log(vac)
+        if (vac !== "") {
+            console.log(vac)
+            ap.vacancy_id = vac 
+        }
+        if (stat !== "") {
+            console.log(stat)
+            ap.status_id = stat
+        }
     }
+    
     ap.position = professions[rnd(professions.length) - 1]
     ap.phone = Math.floor(Math.random() * 1000000000)
     return ap
@@ -718,6 +815,12 @@ function generateApplicant(ap) {
 function getLog(e) {
     const fd = new FormData(logForm)
     const obj = Object.fromEntries(fd)
+    if (obj.stageCheck === "on") {
+        stage = true
+    } 
+    else {stage = false}
+    console.log(obj)
+    console.log(stage)
     login(obj.email, obj.pass)
 }
 
@@ -729,6 +832,10 @@ function getCreate(e) {
     console.log(auth_token)
     const fd = new FormData(createForm)
     const obj = Object.fromEntries(fd)
+    obj.PhotoCheck === "on"?photos = false:photos = true
+    console.log(obj)
+    vac = obj.vacId
+    stat = obj.statId
     let num = 1
     obj.numb === '' ? (num = 1) : (num = obj.numb)
     for (let u = 0; u < num; u++) {
@@ -763,13 +870,89 @@ function uiLogin(me) {
     logMember.textContent = `${isOwner}`
     const logAppCount = document.createElement('div')
     logAppCount.textContent = `Количество кандидатов: ${me.message.applicants_count}`
-    console.log(me)
+    const logEnv = document.createElement("div")
+    logEnv.textContent = `Окружение: ${stage? "Стейдж":"Продакшен"}`
+    const logToken = document.createElement("div")
+    logToken.textContent = `${me.message.token}`
+    logToken.style.letterSpacing = "-0.45rem"
 
     meCont.appendChild(logName)
     meCont.appendChild(logMail)
     meCont.appendChild(logTariff)
     meCont.appendChild(logMember)
     meCont.appendChild(logAppCount)
+    meCont.appendChild(logEnv)
+    meCont.appendChild(logToken)
+
+    getTags()
+
 }
 
 
+
+
+function getTags () {
+
+
+    fetch (`https://${stage?stageString:""}huntlee.ru/api/tags`, {
+        method: "GET",
+        headers: {
+            accept: 'application/json',
+            'X-DCRT-HRM-AUTH': auth_token,
+        }
+    })
+    .then((response) => response.json()) // Преобразуем ответ в JSON
+    .then((result) => {
+ 
+       for (let i = 0; i < result.message.length; i++) {
+        result.message[i].name === "Autogenerated applicant"?HasTag= result.message[i].id:HasTag=false
+       }
+       if(HasTag === false) {
+            createTag()
+       }
+       
+    })
+    .catch((error) => {
+        console.error('Ошибка:', error) // Обрабатываем ошибку
+        return error
+    })
+} 
+
+
+function createTag() {
+
+    const tagJson = {
+        "name": "Autogenerated applicant",
+        "color": "#FF0000",
+        "description": "Эта метка помечает генерированных кандидатов, на неё ориентируются все операции со сгенерированными кандидатами"
+      }
+    fetch (`https://${stage?stageString:""}huntlee.ru/api/tags`,{
+        method: "POST",
+        headers: {
+            'accept': 'application/json',
+            'X-DCRT-HRM-AUTH':auth_token,
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify(tagJson)
+    })
+    .then((response) => response.json()) // Преобразуем ответ в JSON
+    .then((result) => {
+        HasTag = result.message.id
+        
+    })
+}
+
+
+
+function updateTag(id) {
+ 
+    fetch (`https://${stage?stageString:""}huntlee.ru/api/applicants/${id}/update_tags`, {
+        method: "POST",
+        headers : {
+            'accept': 'application/json',
+            'X-DCRT-HRM-AUTH':auth_token,
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({'tags':[HasTag]})
+    }) 
+}

@@ -131,6 +131,42 @@ body {
     
 }
 
+.lrCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.nubBtnCont {
+    width: fit-content;
+}
+
+.checkboxCont {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    width: fit-content;
+}
+.checkbox {
+    appearance: none;
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: black;
+    align-items: center;
+    border:rgb(0, 255, 0) 1px solid;
+}
+.checkbox:last-child:hover{
+    border: rgb(0, 255, 0) 2px solid;
+
+}
+
+.checkbox:last-child:checked {
+    outline: 0.5rem solid rgb(0, 255, 0);
+    outline-offset: -0.75rem;
+}
+
 input {
     border-radius: 0.5rem;
 }
@@ -165,9 +201,6 @@ input {
 }
 .dropdown:hover {
     outline: 1px solid white;
-}
-.dropdown:focus {
-        
 }
 
 #myDropdown{
