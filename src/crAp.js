@@ -69,7 +69,7 @@ const initUi = () => {
     const logInputBtn = document.createElement('input')
     logInputBtn.className = 'btn'
     logInputBtn.type = 'submit'
-    logInputBtn.value = 'log-int'
+    logInputBtn.value = 'login'
 
     bg.bg.appendChild(header)
 
@@ -147,7 +147,7 @@ const initUi = () => {
     const genInputBtn = document.createElement('input')
     genInputBtn.className = 'btn'
     genInputBtn.type = 'submit'
-    genInputBtn.value = ' Создать'
+    genInputBtn.value = 'Создать'
 
     header.appendChild(crApUi)
     crApUi.appendChild(genForm)
