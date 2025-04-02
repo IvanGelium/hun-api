@@ -26,7 +26,7 @@ const crUsUi = () => {
     passPassCont.className = 'pass-pass-cont input-cont'
     const passPassLabel = document.createElement('label')
     passPassLabel.setAttribute('for', 'mail')
-    passPassLabel.textContent = 'Почта (будет использована как пароль)'
+    passPassLabel.textContent = 'Почта (пароль "adminadmin")'
     const passPassInput = document.createElement('input')
     passPassInput.placeholder = 'addres@domen.domen'
     passPassInput.type = 'email'
@@ -42,6 +42,7 @@ const crUsUi = () => {
     nameputLabel.textContent = 'Имя пользователя'
     const nameputInput = document.createElement('input')
     nameputInput.placeholder = 'Ivan'
+    nameputInput.value = 'Admin'
     nameputInput.type = 'text'
     nameputInput.name = 'userName'
     nameputInput.id = 'userName'
@@ -130,8 +131,6 @@ const crUsUi = () => {
     signUp.addEventListener('click', (e) => getData(e))
 }
 
-fetch
-
 function getData(e) {
     e.preventDefault()
     const fd = new FormData(signForm)
@@ -149,8 +148,8 @@ function signUp(email, name, company, author) {
     const json = {
         admin_user: {
             email: email,
-            password: email,
-            password_confirmation: email,
+            password: 'adminadmin',
+            password_confirmation: 'adminadmin',
             name: name === '' ? 'Admin' : name,
             nick: 'Sample Ivan',
             member_type: 'owner',
@@ -162,7 +161,7 @@ function signUp(email, name, company, author) {
                 is_hide_history_applicant: true,
                 is_hide_experience: true,
                 is_hide_education: true,
-                is_hide_chat: true,
+                is_hide_chat: false,
                 pick_sort_vacancies: 'owners',
                 pick_sort_applications: 'table',
                 download_pdf: {
