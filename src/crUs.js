@@ -5,6 +5,7 @@ let usersObj = {}
 let signForm = ''
 let dropBtn = ''
 let resp = ''
+let stageOn = false
 
 const crUsUi = () => {
     if (bg.bg.lastElementChild.className !== 'heheader') {
@@ -58,6 +59,17 @@ const crUsUi = () => {
     compaputInput.name = 'userCompany'
     compaputInput.id = 'userCompany'
 
+    const inn = document.createElement('div')
+    inn.className = 'inn input-cont'
+    const innLabel = document.createElement('label')
+    innLabel.setAttribute('for', 'inn')
+    innLabel.textContent = 'ИНН (обязательно*)'
+    const innInput = document.createElement('input')
+    innInput.placeholder = "123456789101"
+    innInput.type = 'text'
+    innInput.name = 'inn'
+    innInput.id = 'inn'
+
     const dd = document.createElement('div')
     dd.className = 'dd input-cont'
     const dropdown = document.createElement('div')
@@ -79,6 +91,23 @@ const crUsUi = () => {
             myDropdown.classList.add('hide')
         })
     }
+
+    const lastRowCont = document.createElement('div')
+    lastRowCont.className = 'lastRow check input-cont'
+
+    const checkboxCont2 = document.createElement('div')
+    checkboxCont2.className = 'checkboxCont'
+
+    const stageOnCheck = document.createElement('input')
+    stageOnCheck.className = 'stageon checkbox '
+    stageOnCheck.type = 'checkbox'
+    stageOnCheck.name = 'stageon'
+
+    const stageLabel = document.createElement('label')
+    stageLabel.setAttribute('for', 'stageon')
+    stageLabel.name = 'stageon'
+    stageLabel.id = 'stageon'
+    stageLabel.textContent = 'stage:'
 
     const btnContainer = document.createElement('div')
     btnContainer.className = 'btn-container input-cont'
@@ -107,6 +136,12 @@ const crUsUi = () => {
     compaput.appendChild(compaputLabel)
     compaput.appendChild(compaputInput)
 
+    signForm.appendChild(inn)
+    inn.appendChild(innLabel)
+    inn.appendChild(innInput)
+
+    
+
     signForm.appendChild(dd)
     dd.appendChild(dropdown)
     dropdown.appendChild(dropBtn)
@@ -116,7 +151,6 @@ const crUsUi = () => {
     }
 
     dropBtn.addEventListener('click', () => {
-        console.log(myDropdown)
         if (myDropdown.classList.contains('hide')) {
             myDropdown.classList.remove('hide')
         } else {
@@ -124,10 +158,15 @@ const crUsUi = () => {
         }
     })
 
-    signForm.appendChild(btnContainer)
-    btnContainer.appendChild(signUp)
-    header.appendChild(resp)
+    signForm.appendChild(lastRowCont)
+    lastRowCont.appendChild(checkboxCont2)
+    checkboxCont2.appendChild(stageLabel)
+    checkboxCont2.appendChild(stageOnCheck)
+    lastRowCont.appendChild(signUp)
 
+
+
+    header.appendChild(resp)
     signUp.addEventListener('click', (e) => getData(e))
 }
 
@@ -135,16 +174,18 @@ function getData(e) {
     e.preventDefault()
     const fd = new FormData(signForm)
     const obj = Object.fromEntries(fd)
-    console.log(obj, dropBtn.textContent)
     signUp(
         obj.mail,
         obj.userName,
         obj.userCompany,
-        dropBtn.textContent === 'Автор' ? 'test' : dropBtn.textContent
+        dropBtn.textContent === 'Автор' ? 'test' : dropBtn.textContent,
+        obj.inn,
+        obj.stageon==="on"?true:false
     )
 }
 
-function signUp(email, name, company, author) {
+function signUp(email, name, company, author, inn,stage=false) {
+    console.log(stage)
     const json = {
         admin_user: {
             email: email,
@@ -154,6 +195,7 @@ function signUp(email, name, company, author) {
             nick: 'Sample Ivan',
             member_type: 'owner',
             company: company === '' ? 'Без компании' : company,
+            inn: `${inn}`,
             utm_source: author,
             is_adv_agree: true,
             time_zone: 'Asia/Yekaterinburg',
@@ -198,8 +240,7 @@ function signUp(email, name, company, author) {
             },
         },
     }
-
-    fetch('https://huntlee.ru/api/sign_up', {
+    fetch(`https://${stage?"stage.":""}huntlee.ru/api/sign_up`, {
         method: 'POST',
         headers: {
             accept: '*/*',
@@ -209,7 +250,6 @@ function signUp(email, name, company, author) {
     })
         .then((response) => response.json()) // Преобразуем ответ в JSON
         .then((result) => {
-            console.log(result)
             if (result.status === 'error') {
                 resp.textContent = `Ответ: ${result.message}`
             }
