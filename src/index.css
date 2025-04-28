@@ -83,7 +83,7 @@ body {
     font-weight: 100;
     height: 100vh;
     width: 100vw;
-    padding: 0.5rem 2rem  2rem 2rem ;
+    padding: 0.5rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -96,16 +96,15 @@ body {
 }
 
 .tab {
-    padding-left:1rem;
-    padding-right:1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: 1.5rem;
     opacity: 50%;
-    border: 1px solid
+    border: 1px solid;
 }
 .tab:hover {
     opacity: 70%;
 }
-
 
 .header {
     display: flex;
@@ -128,7 +127,40 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    
+}
+
+.lrCont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nubBtnCont {
+    width: fit-content;
+}
+
+.checkboxCont {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    width: fit-content;
+}
+.checkbox {
+    appearance: none;
+    border-radius: 100%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: black;
+    align-items: center;
+    border: rgb(0, 255, 0) 1px solid;
+}
+.checkbox:last-child:hover {
+    border: rgb(0, 255, 0) 2px solid;
+}
+
+.checkbox:last-child:checked {
+    outline: 0.5rem solid rgb(0, 255, 0);
+    outline-offset: -0.75rem;
 }
 
 input {
@@ -137,8 +169,8 @@ input {
 
 .btn {
     background-color: rgb(0, 255, 0);
-    width: 5rem;
-    align-self: flex-end;
+    width: fit-content;
+
 }
 
 .btn:hover {
@@ -166,11 +198,8 @@ input {
 .dropdown:hover {
     outline: 1px solid white;
 }
-.dropdown:focus {
-        
-}
 
-#myDropdown{
+#myDropdown {
     position: relative;
     top: 0.35rem;
     outline-offset: -1px;
@@ -188,3 +217,10 @@ input {
 .hide {
     visibility: hidden;
 }
+
+.lastRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
