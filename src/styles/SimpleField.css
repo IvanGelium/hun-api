@@ -1,0 +1,20 @@
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field {
+  border: none;
+  background-color: var(--fields);
+  color: var(--white);
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 1.5rem;
+  width: 100%;
+}
+
+.field:focus {
+  outline: 2px solid var(--accent);
+}

@@ -1,0 +1,11 @@
+.headerLogo {
+  display: flex;
+  gap: 1rem;
+}
+
+.logoElement {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--accent);
+  border-radius: 100%;
+}
