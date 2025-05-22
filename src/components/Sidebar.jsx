@@ -66,7 +66,7 @@ export default function Sidebar() {
             </SideBtn>
           </div>
           <div className='btn' id='colorTheme'>
-            <SideBtn>
+            <SideBtn link='/hun-api/settings'>
               <RiLightbulbLine className='sideBarBtnIcon' />
             </SideBtn>
           </div>
