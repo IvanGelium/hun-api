@@ -7,7 +7,7 @@
 .field {
   border: none;
   background-color: var(--fields);
-  color: var(--white);
+  color: var(--text);
   border-radius: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;

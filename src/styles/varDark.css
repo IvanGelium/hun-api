@@ -1,12 +1,30 @@
-:root {
-  --bg-color: #202020;
-  --bg-color-secondary: #404040;
-  --text: #fefefe;
-  --accent: rgb(200, 200, 255);
-  --fields: #606060;
-  --unimportant-text: #acacac;
-  --green: rgb(52, 116, 50);
-  --blue: rgb(50, 76, 116);
-  --yellow: rgb(116, 112, 50);
-  --red: rgb(116, 50, 50);
+[date-theme='light'] {
+  --bg-color: #ffffff;
+  --bg-color-secondary: #f5f5f5;
+  --text: #2a2a2a;
+  --accent: rgb(70, 100, 220);
+  --fields: #e0e0e0;
+  --unimportant-text: #757575;
+  --green: rgb(154, 248, 156);
+  --blue: rgb(154, 181, 248);
+  --yellow: rgb(248, 243, 154);
+  --red: rgb(248, 154, 154);
+}
+
+[date-theme='dark'] {
+  --bg-color: #181818;
+  --bg-color-secondary: #2a2a2a;
+  --text: #f0f0f0;
+  --accent: rgb(170, 170, 255);
+  --fields: #434343;
+  --unimportant-text: #8a8a8a;
+
+  --green: rgb(65, 160, 60);
+  --blue: rgb(70, 110, 200);
+  --yellow: rgb(200, 180, 60);
+  --red: rgb(200, 70, 70);
+
+  --hover-state: rgba(255, 255, 255, 0.05);
+  --active-state: rgba(255, 255, 255, 0.1);
+  --border: #3a3a3a;
 }

@@ -22,14 +22,12 @@ body {
   line-height: 1.5;
   /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
-  font-family:
-    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 input {
-  font-family:
-    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -104,6 +102,9 @@ h6 {
   color: red;
   font-size: 16px;
   display: inline;
+}
+* {
+  transition: linear 0.1s;
 }
 
 body {

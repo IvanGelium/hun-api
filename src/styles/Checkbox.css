@@ -7,13 +7,14 @@
 
 .checkbox {
   appearance: none;
-  border-radius: 100rem;
+  border-radius: 0.3rem;
   width: 1rem;
   height: 1rem;
-  background-color: var(--text);
+  background-color: var(--fields);
+  outline: 2px solid var(--bg-color);
 }
 .checkbox:checked {
-  outline: 0.35rem solid var(--bg-color);
+  outline: 0.35rem solid var(--accent);
   outline-offset: -0.5rem;
 }
 
