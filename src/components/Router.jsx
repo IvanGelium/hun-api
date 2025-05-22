@@ -23,7 +23,6 @@ const Router = createBrowserRouter([
         element: <SuggestionPage />,
       },
     ],
-    basename: '/hun-api',
   },
 ])
 
