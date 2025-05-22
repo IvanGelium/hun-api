@@ -15,14 +15,15 @@ const Router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: 'main',
+        path: '/hun-api/main',
         element: <MainPage />,
       },
       {
-        path: 'suggestions',
+        path: '/hun-api/suggestions',
         element: <SuggestionPage />,
       },
     ],
+    basename: '/hun-api/',
   },
 ])
 
