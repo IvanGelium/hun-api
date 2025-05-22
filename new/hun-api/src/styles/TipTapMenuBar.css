@@ -1,0 +1,35 @@
+.TipTapButtonGroup {
+  background-color: var(--bg-color-secondary);
+  border-radius: 0.5rem 0.5rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem 0 0.5rem;
+  align-items: center;
+}
+
+.tipTapOnlyButtons {
+  padding: 0.25rem 0 0.25rem 0;
+  justify-content: flex-end;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tiptapMenuButton {
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.tiptapMenuHeadingNumber {
+  transform: translateX(-2px);
+}
+
+.tipTapMenuIconFill {
+  fill: var(--text);
+}
+
+.tiptapEditorIsActiveStateMenuButton {
+  color: black;
+  border-radius: 0.5rem;
+  background-color: var(--fields);
+}

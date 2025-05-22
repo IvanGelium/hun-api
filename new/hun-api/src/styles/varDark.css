@@ -1,0 +1,12 @@
+:root {
+  --bg-color: #202020;
+  --bg-color-secondary: #404040;
+  --text: #fefefe;
+  --accent: rgb(200, 200, 255);
+  --fields: #606060;
+  --unimportant-text: #acacac;
+  --green: rgb(52, 116, 50);
+  --blue: rgb(50, 76, 116);
+  --yellow: rgb(116, 112, 50);
+  --red: rgb(116, 50, 50);
+}

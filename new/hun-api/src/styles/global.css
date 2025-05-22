@@ -1,0 +1,212 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  font-family:
+    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input {
+  font-family:
+    'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  overflow-wrap: break-word;
+  color: var(--text);
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+.wip {
+  color: red;
+  font-size: 16px;
+  display: inline;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+a:visited {
+  color: var(--text);
+}
+
+.unimportantText,
+.unimportantText:visited {
+  color: var(--unimportant-text);
+}
+
+.whole {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg {
+  height: calc(100vh - 60px);
+
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+}
+
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--bg-color-secondary);
+}
+
+.searchBar {
+  height: 30px;
+  width: 300px;
+  background-color: var(--fields);
+  border-radius: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: var(--text);
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.midel {
+  padding-left: 1rem;
+  width: calc(100vw - 66px);
+  overflow: hidden;
+}
+
+.page {
+  height: calc(100vh - 76px);
+}
+
+.fieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.field {
+  border: none;
+  background-color: var(--fields);
+  color: var(--text);
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 1.5rem;
+  width: 100%;
+}
+
+.field:focus {
+  outline: 2px solid var(--accent);
+}
+
+.wholeSelect {
+  width: 80px;
+}
+
+.hiddenSelect {
+  visibility: hidden;
+}
+
+.select > p:hover {
+  color: var(--accent);
+}
+
+.optionOfSelect > p:hover {
+  color: var(--accent);
+}
