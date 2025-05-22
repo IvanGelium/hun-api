@@ -8,12 +8,25 @@
     <script
       type="module"
       crossorigin
-      src="./dist/assets/main-OXHIzD7z.js"
+      src="./dist/assets/main-Ci2h-ZLO.js"
     ></script>
     <link rel="stylesheet" crossorigin href="./dist/assets/main-0b9woPwL.css" />
   </head>
   <body>
     <div id="root"></div>
     <div id="modal"></div>
+    <script>
+      const repoName = '/hun-api'
+      if (
+        window.location.pathname !== repoName + '/' &&
+        !window.location.pathname.startsWith(repoName + '/')
+      ) {
+        window.history.replaceState(
+          null,
+          '',
+          repoName + window.location.pathname
+        )
+      }
+    </script>
   </body>
 </html>

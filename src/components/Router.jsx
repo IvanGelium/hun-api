@@ -11,6 +11,10 @@ const Router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
+        index: true,
+        element: <Navigate to='main' replace />,
+      },
+      {
         path: 'main',
         element: <MainPage />,
       },
