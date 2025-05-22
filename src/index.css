@@ -170,7 +170,7 @@ input {
 .btn {
     background-color: rgb(0, 255, 0);
     width: fit-content;
-    align-self: flex-end;
+
 }
 
 .btn:hover {
@@ -217,3 +217,10 @@ input {
 .hide {
     visibility: hidden;
 }
+
+.lastRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
