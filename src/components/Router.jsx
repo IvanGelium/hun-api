@@ -11,19 +11,15 @@ const Router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        index: true,
+        path: 'main',
         element: <MainPage />,
       },
       {
-        path: '/hun-api/main',
-        element: <MainPage />,
-      },
-      {
-        path: '/hun-api/suggestions',
+        path: 'suggestions',
         element: <SuggestionPage />,
       },
     ],
-    basename: '/hun-api/',
+    basename: '/hun-api',
   },
 ])
 

@@ -19,17 +19,17 @@ export default function Sidebar() {
       <div className='sidebar'>
         <div className='btnContainer'>
           <div className='btn' id='main'>
-            <SideBtn link='/hun-api/main'>
+            <SideBtn link='main'>
               <RiTerminalWindowLine className='sideBarBtnIcon' />
             </SideBtn>
           </div>
           <div className='btn' id='suggestions'>
-            <SideBtn link='/hun-api/suggestions'>
+            <SideBtn link='suggestions'>
               <RiFileTextLine className='sideBarBtnIcon' />
             </SideBtn>
           </div>
           <div className='btn' id='closedTasks'>
-            <SideBtn link='/hun-api/closedTasks'>
+            <SideBtn link='closedTasks'>
               <RiFileCloseLine className='sideBarBtnIcon' />
             </SideBtn>
           </div>
