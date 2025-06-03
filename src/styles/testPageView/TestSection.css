@@ -1,0 +1,23 @@
+.testSectionWhole {
+  outline: 2px solid var(--bg-color-secondary);
+  min-height: 4rem;
+  max-width: 100%;
+}
+
+.testSectionHeader {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  width: 100%;
+  height: 2rem;
+  background-color: var(--bg-color-secondary);
+  padding: 0 1rem 0 1rem;
+}
+
+.testSectionBody {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

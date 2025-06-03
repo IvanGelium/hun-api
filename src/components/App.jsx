@@ -14,13 +14,13 @@ function App({ children }) {
             <div className='logoElement'></div>
             <h2>Hunapi</h2>
           </div>
-          <div className='searchBar'>
+          {/* <div className='searchBar'>
             Поиск <div className='wip'>WIP</div>
-          </div>
-          <div className='profile'>
+          </div> */}
+          {/* <div className='profile'>
             <h3>Войти</h3>
             <div className='wip'>WIP</div>
-          </div>
+          </div> */}
         </div>
 
         <div className='bg'>

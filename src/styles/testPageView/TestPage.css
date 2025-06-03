@@ -1,0 +1,25 @@
+.testsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 2rem;
+}
+
+.testsHeaderTabs {
+  display: flex;
+  align-items: center;
+  border-radius: 100rem;
+}
+
+.testsHeaderTabs > * {
+  background-color: var(--bg-color-secondary);
+  padding: 0.5rem;
+}
+
+.selectedTab {
+  background-color: var(--accent);
+}
+
+.testsBody {
+  overflow: scroll;
+}
