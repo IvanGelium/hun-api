@@ -38,7 +38,6 @@ export default ({ title }) => {
     if (!editor) return
     const html = editor.getHTML()
     setSavedHtml(html)
-    console.log('Сохранено:', html)
   }
 
   return (

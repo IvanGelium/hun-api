@@ -20,7 +20,6 @@ export default function CreateAdminForm() {
         setScreen(ScreenMsgCreateAdmin(res.data))
       })
       .catch((err) => {
-        console.log(err)
         setScreen(<p>Ошибка сервера</p>)
       })
     setScreen(<p>Ожидаем ответ...</p>)

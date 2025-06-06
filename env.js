@@ -1,6 +1,7 @@
 const link = 'https://huntlee.ru/api'
 const linkStage = 'https://stage.huntlee.ru/api'
 const linkGitLab = 'https://gitlab.violinorg.ru/huntlee/huntlee/-/issues/'
+const API_BASE_URL = 'http://localhost:4000/api'
 const salesArray = [
   { value: 'test', id: 0 },
   { value: 'artem', id: 1 },
@@ -9,4 +10,4 @@ const salesArray = [
   { value: 'yulian', id: 4 },
 ]
 
-export { link, linkStage, salesArray, linkGitLab }
+export { link, linkStage, salesArray, linkGitLab, API_BASE_URL }

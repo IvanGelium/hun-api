@@ -116,3 +116,12 @@
   writing-mode: horizontal-tb;
   font-weight: bold;
 }
+
+.suggestionCardEditWrap {
+  padding: 1rem 0 0 1rem;
+}
+
+.disconnect {
+  color: var(--text);
+  padding: 1rem;
+}

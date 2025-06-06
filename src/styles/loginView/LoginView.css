@@ -1,0 +1,9 @@
+.loginViewWholePage {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.loginViewBody {
+  width: 500px;
+}

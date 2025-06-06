@@ -23,14 +23,18 @@ const extensions = [
   ,
 ]
 
-export default ({ title }) => {
+export default ({ title, onChange }) => {
   const [savedHtml, setSavedHtml] = useState('')
 
   const editor = useEditor({
     extensions: extensions,
-    content: '<h3>Пока всё wip</h3>',
+    content: '',
     editorProps: {
       attributes: { class: 'tipTapEditorTextScreen' },
+    },
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML() // Получаем HTML
+      onChange(html) // Передаём в родительский компонент
     },
   })
 
@@ -38,7 +42,6 @@ export default ({ title }) => {
     if (!editor) return
     const html = editor.getHTML()
     setSavedHtml(html)
-    console.log('Сохранено:', html)
   }
 
   return (

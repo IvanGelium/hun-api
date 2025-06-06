@@ -2,10 +2,11 @@ import ErrorPage from './ErrorPage.jsx'
 import MainPage from './main/MainPage.jsx'
 import SuggestionPage from './suggestion/SuggestionPage.jsx'
 import TestPageView from '../views/TestPageView.jsx'
+import LoginView from '../views/LoginView.jsx'
+
 import App from './App.jsx'
 import { createBrowserRouter } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
-
 
 const Router = createBrowserRouter([
   {
@@ -22,12 +23,16 @@ const Router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: 'suggestions',
+        path: 'suggestion',
         element: <SuggestionPage />,
       },
       {
-        path: 'tests',
+        path: 'test',
         element: <TestPageView />,
+      },
+      {
+        path: 'login',
+        element: <LoginView />,
       },
     ],
   },
