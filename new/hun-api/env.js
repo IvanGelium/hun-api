@@ -7,6 +7,7 @@ const salesArray = [
   { value: 'stas', id: 2 },
   { value: 'kirill', id: 3 },
   { value: 'yulian', id: 4 },
+  { value: 'daria', id: 5 },
 ]
 
 export { link, linkStage, salesArray, linkGitLab }
